@@ -162,6 +162,43 @@ define(function(require, exports, module) {
             x1 = x1.replace(rgx, '$1' + ',' + '$2');
             }
             return x1 + x2;
-        }
+        },
+        
+        getIntervalTime : function(startTime) {
+            var day, diffTime, eTime, hour, minute, sTime, second, time;
+            sTime = new Date(startTime.replace(/\-/g, "/"));
+            eTime = new Date();
+            diffTime = eTime.getTime() - sTime.getTime();
+            second = 1000;
+            minute = 1000 * 60;
+            hour = 1000 * 3600;
+            day = 1000 * 3600 * 24;
+            if (diffTime < second) {
+                time = '刚刚';
+            } else if (diffTime < minute) {
+                time = parseInt(diffTime / parseInt(second)) + '秒前';
+            } else if (diffTime < hour) {
+                time = parseInt(diffTime / parseInt(minute)) + '分钟前';
+            } else if (diffTime < day) {
+                time = parseInt(diffTime / parseInt(hour)) + '小时前';
+            } else {
+                time = startTime.split(' ')[0];
+            }
+            return time;
+        };
+        
+        /* 从右往左每三位数字加个逗号 */   
+        this.separateNum : function(num) {
+            var ret;
+            ret = [];
+            while (num) {
+                num = num.replace(/\d{1,3}$/g, function(a) {
+                  ret.unshift(a);
+                  return "";
+                });
+            }
+            return ret.join(",");
+        };
+        
     }
 });
