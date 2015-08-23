@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+  <head>
+		<title>Mobile Cookbook</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+		html, body {
+			padding: none;
+			margin: none;
+		}
+		@media all and (orientation : landscape) {  
+		        body {   
+		            background-color: #FFCCCC;   
+		        }  
+		    }  
+
+		    @media all and (orientation : portrait){  
+		        body {  
+		            background-color: #99CCFF;  
+		        }  
+		    }  
+		</style>
+    
+	<script src="http://www.zeptojs.cn/down/zepto.min.js"></script>
+	<script src="reorient.js"></script>
+  </head>
+  <body>
+    <div id="a">
+    </div>
+		<script>
+			var metas = document.getElementsByTagName('meta');
+			var i;
+			if (navigator.userAgent.match(/iPhone/i)) {
+				for (i=0; i<metas.length; i++) {
+					if (metas[i].name == "viewport") {
+						metas[i].content = "width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+					}
+				}
+				document.addEventListener("gesturestart", gestureStart, false);
+			}
+			function gestureStart() {
+				for (i=0; i<metas.length; i++) {
+					if (metas[i].name == "viewport") {
+						metas[i].content = "width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+					}
+				}
+			}
+		</script>
+    
+		<script>
+		$(function(){
+			$.reorient.start();
+			
+		})
+		$(window).bind('reorient',function(){
+	        $("#a").html("<p>"+$.reorient.orientation.toUpperCase()+"</p>");
+	    })
+		</script>
+	</body>
+</html>
+	
+
+
+ 

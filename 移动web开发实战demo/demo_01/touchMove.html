@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+		<title>Mobile Cookbook</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+		#someElm {
+			width: 100px;
+			height: 100px;
+			background:#ccc;
+			position:absolute;
+		}
+		</style>
+  </head>
+  <body>
+    <header>
+    </header>
+		<div id="main">
+			<div id="someElm">
+			</div>
+		</div>
+    <footer>
+    </footer>
+	<script src="http://www.zeptojs.cn/down/zepto.min.js"></script>
+	<script>
+	$('#someElm').bind('touchmove',function(e){
+	e.preventDefault();
+		var touch = e.touches[0] || e.changedTouches[0];
+		var elm = $(this).offset();
+		var x = touch.pageX - elm.left/2;
+		var y = touch.pageY - elm.top/2;
+		$(this).css('left', x+'px');
+		$(this).css('top', y+'px');
+		console.log(touch.pageY+' '+touch.pageX);  
+	});
+	</script>
+	</body>
+</html>
+	
+
+
+ 
