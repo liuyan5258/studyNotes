@@ -1,3 +1,21 @@
+##桌面优先的网站
+在创建纯粹的桌面网站或纯粹的移动网站之外，我们还有其他的建站方式，其中之一就是桌面优先，并在移动设备上优雅降级。
+##移动优先网站
+另一种方式是移动优先，并在桌面设备上优雅降级。
+```css
+@media only screen and (min-width:320px) {
+    /* style */
+}
+@media only screen and (min-width:640px) {
+	/* style */
+}
+@media only screen and (min-width:800px) {
+	/* style */
+}
+@media only screen and (min-width:1024px) {
+	/* style */
+}
+```
 ##一站方式
 只创建一个网站，并兼容移动和桌面设备，而不是只专注其中一个。
 ##避免文本字体大小重置
@@ -73,3 +91,16 @@ html{
 }(document);
 ```
 这是John-David dalton做的修改，似乎是更好的版本，请戳原地址：https://gist.github.com/jdalton/903131
+##在浏览器中启动手机原生应用（地图、电话、短信等）
+使用设备：基于浏览器的所有设备  
+具体能够启动哪些应用：这取决于该移动设备上哪些原生应用是否允许从浏览器启动。
+```html
+<a href="http://maps.google.com/maps?q=cupertino">directions</a>
+```
+在palm os的浏览器中访问该页面，并点击directions链接，会启动你手机上的原生的GoogleMap应用。
+```html
+<a href="http://maps.google.com/maps?daddr=San+Francisco,+CA&saddr=cupertino">derections</a>
+```
+并不只是打开，还可以直接定位初始位置SanFrancisco和终点位置cupertino。  
+想了解更多移动版的Safari的URL scheme，请戳：http://developer.apple.com/library/safari/#featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html
+##iPhone下的全屏模式启动
