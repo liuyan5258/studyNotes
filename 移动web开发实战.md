@@ -163,3 +163,30 @@ a {
 	white-space: nowrap;
 }
 ```
+#移动设备的交互方式
+##利用触控来移动页面元素
+适用设备：跨浏览器  
+
+具体代码看 移动web开发实战demo/demo_01  
+问题：移动版safari不允许event对象的touches和changedTouches属性被拷贝给其他对象，我们可以用e.originalEvent来解决。  
+更多关于移动版safari的移动事件处理指南，请戳：https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariWebContent/HandlingEvents/HandlingEvents.html  
+##检测和处理横竖屏切换事件
+适用设备：跨浏览器  
+通过监听window.onorientationchange事件，当竖屏切换事件触发时，orientationchange会被触发，同时我们得到event.orientation作为参数传递该方法并输出。  
+也可以通过media query来控制横屏和竖屏时的样式：
+```css
+<style type="text/css">  
+    @media all and (orientation : landscape) {  
+        body {   
+            background-color: #ff0000;   
+        }  
+    }  
+
+    @media all and (orientation : portrait){  
+        body {  
+            background-color: #00ff00;  
+        }  
+    }  
+</style> 
+```
+具体代码看 移动web开发实战demo/demo_02  
