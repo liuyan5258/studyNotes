@@ -1,0 +1,35 @@
+﻿<!doctype html>
+<html>
+  <head>
+    <title>first.fm</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      #contact {
+        width:220px; height:40px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Contact Form</h1>
+    </header>
+    <div id="main">
+      <textarea id="contact"></textarea><br />
+      <button id="btn">INSTANT button!!!</button><br />
+      <span id="result"></span>
+    </div>
+    <footer>
+      <small>&copy; 2011 first.fm</small>
+    </footer>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.1.min.js"></script>
+    <script src="helper.js"></script>
+    <script>
+      var btn = document.getElementById("btn");
+      MBP.fastButton(btn,showForm);
+      function showForm() {
+        $("#result").html("Thank you for submiting, we will get back to you shortly!");
+      }
+    </script>
+  </body>
+</html>

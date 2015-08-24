@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+		<title>Mobile Cookbook</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<style>
+    #main {
+      text-align:center;
+    }
+		#someElm {
+      margin-top:50px;
+      margin-left:50px;
+			width: 200px;
+			height: 200px;
+			background:#ccc;
+			position:absolute;
+		}
+		</style>
+  </head>
+  <body>
+    <header>
+    </header>
+		<div id="main">
+			<div id="someElm">
+			</div>
+		</div>
+    <footer>
+    </footer>
+		
+		<script>
+		var rotation =0 ;
+    var node = document.getElementById('someElm');
+    
+    node.ongesturechange = function(e){
+      
+      var node = e.target;
+      //alert(e.rotation);
+      // scale and rotation are relative values,
+      // so we wait to change our variables until the gesture ends
+      node.style.webkitTransform = "rotate(" + ((rotation + e.rotation) % 360) + "deg)";
+      //alert("rotate(" + ((rotation + e.rotation) % 360) + "deg)");
+    }
+     
+    node.ongestureend = function(e){
+      // Update the values for the next time a gesture happens
+      rotation = (rotation + e.rotation) % 360;
+    }
+		</script>
+	</body>
+</html>
+	
+
+
+ 
