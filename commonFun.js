@@ -219,7 +219,16 @@ define(function(require, exports, module) {
             //floor() 方法执行的是向下取整计算，它返回的是小于或等于函数参数，并且与之最接近的整数  
             s = Math.floor(this * temp) + tempNum;  
             return s/temp;  
-        }
+        },
+        
+        /**
+            * [四舍五入保留一位小数]
+        */
+        round : function (number,Digit){  
+            with(Math){  
+                return round(number / 9999 * pow(10,Digit)) / pow(10,Digit) + "万";
+            }  
+        } 
         
     }
 });
