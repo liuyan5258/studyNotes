@@ -33,4 +33,8 @@
     
     //给不存在的data-属性赋值，会自动创建
     element.dataset.mootoolsFtw = "true";
-```
+```  
+###相关链接  
+* https://jsperf.com/jquery-html-vs-innerhtml-the-better-way/3
+* https://jsperf.com/jquery-html-vs-text-vs-innerhtml-vs-innertext-textconte/2
+* https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
