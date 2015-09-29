@@ -15,6 +15,8 @@ for(var i = 0;i < 10;i++){
 
 alert(num);  //55
 ```
+注意：break;和return;的区别在于break;多用于循环语句中，return;用于一个函数里面，break 是跳出循环，
+return是结束return下面的运行，直接返回函数
 ```javascript
 var num = 0;
 
