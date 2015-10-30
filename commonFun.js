@@ -228,7 +228,19 @@ define(function(require, exports, module) {
             with(Math){  
                 return round(number / 9999 * pow(10,Digit)) / pow(10,Digit) + "万";
             }  
-        } 
-        
+        },
+
+        /**
+            * [获取单个cookieName的值]
+        */
+
+        getCookieValue : function(name) {
+          var parts, value;
+          value = '; ' + document.cookie;
+          parts = value.split('; ' + name + '=');
+          if (parts.length === 2) {
+            return parts.pop().split(';').shift();
+          }
+        }
     }
 });
