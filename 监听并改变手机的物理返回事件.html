@@ -1,0 +1,64 @@
+<!doctype html>
+<html class="no-js" lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <title>监听并改变手机的物理返回事件</title>
+  <script >
+    ;!function(pkg, undefined){
+      var STATE = 'x-back';
+      var element;
+
+      var onPopState = function(event){
+        event.state === STATE && fire();
+      }
+
+      var record = function(state){
+        history.pushState(state, null, location.href);
+      }
+
+      var fire = function(){
+        var event = document.createEvent('Events');
+        event.initEvent(STATE, false, false);
+        element.dispatchEvent(event);
+      }
+
+      var listen = function(listener){
+        element.addEventListener(STATE, listener, false);
+      }
+
+      ;!function(){
+        element = document.createElement('span');
+        window.addEventListener('popstate', onPopState);
+        this.listen = listen;
+        record(STATE);
+      }.call(window[pkg] = window[pkg] || {});
+
+    }('XBack');
+  </script>
+</head>
+<body>
+  <script>
+    (function(){
+      document.addEventListener('click', function(){
+        window.location.hash = '#photo'
+      })
+      XBack.listen(function() {
+        alert('oh! you press the back button')
+        // 安卓下的问题，直接window.location.href不能跳转
+        setTimeout(function() {
+          window.location.href = 'http://3g.163.com/touch/all'
+        }, 50)
+      })
+      XBack.listen(function() {
+        alert('ah, press press press')
+      })
+    })()
+  </script>
+</body>
+</html>
